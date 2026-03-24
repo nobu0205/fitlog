@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  category: 1
+  exercise_type: 1
+  mets: 1.5
+  is_custom: false
+  user: one
+
+two:
+  name: MyString
+  category: 1
+  exercise_type: 1
+  mets: 1.5
+  is_custom: false
+  user: two
