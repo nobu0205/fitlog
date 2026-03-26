@@ -1,0 +1,26 @@
+<div class="strength-record-fields border p-2 mb-2">
+  <button type="button" data-action="click->strength-form#remove" class="float-right">×</button>
+
+  <%= hidden_field_tag "workout[strength_records_attributes][][_destroy]", 0 %>
+
+  <div>
+    <label>種目</label>
+    <%= select_tag "workout[strength_records_attributes][][exercise_id]",
+      options_from_collection_for_select(exercises, :id, :name) %>
+  </div>
+
+  <div>
+    <label>重量</label>
+    <%= number_field_tag "workout[strength_records_attributes][][weight]" %>
+  </div>
+
+  <div>
+    <label>回数</label>
+    <%= number_field_tag "workout[strength_records_attributes][][reps]" %>
+  </div>
+
+  <div>
+    <label>セット数</label>
+    <%= number_field_tag "workout[strength_records_attributes][][sets]" %>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="cardio-record-fields border p-2 mb-2">
+  <button type="button" data-action="click->cardio-form#remove" class="float-right">×</button>
+
+  <%= hidden_field_tag "workout[cardio_records_attributes][][_destroy]", 0 %>
+
+  <div>
+    <label>種目</label>
+    <%= select_tag "workout[cardio_records_attributes][][exercise_id]",
+      options_from_collection_for_select(exercises, :id, :name) %>
+  </div>
+
+  <div>
+    <label>時間（分）</label>
+    <%= number_field_tag "workout[cardio_records_attributes][][duration]" %>
+  </div>
+
+  <div>
+    <label>距離（km）</label>
+    <%= number_field_tag "workout[cardio_records_attributes][][distance]" %>
+  </div>
+</div>

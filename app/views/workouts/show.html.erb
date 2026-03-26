@@ -1,0 +1,56 @@
+<h1>ワークアウト詳細</h1>
+
+<div style="
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin-bottom: 20px;
+">
+  <div style="display: flex; justify-content: space-between; align-items: center;">
+    <strong style="font-size: 1.2em;"><%= @workout.date.strftime("%Y/%m/%d") %></strong>
+    <% strength_total = @workout.strength_records.sum { |sr| sr.calories.to_f } %>
+    <% cardio_total = @workout.cardio_records.sum { |cr| cr.calories.to_f } %>
+    <% total_calories = strength_total + cardio_total %>
+    <span style="font-weight: bold; color: #d9534f;">合計消費: <%= total_calories.round(1) %> kcal</span>
+  </div>
+
+  <% if @workout.memo.present? %>
+    <p style="margin: 10px 0; font-style: italic;"><%= @workout.memo %></p>
+  <% end %>
+
+  <!-- 筋トレ -->
+  <% if @workout.strength_records.any? %>
+    <div style="margin-bottom: 10px;">
+      <h4 style="margin-bottom: 5px; color: #5bc0de;">💪 筋トレ</h4>
+      <ul style="padding-left: 15px;">
+        <% @workout.strength_records.each do |sr| %>
+          <li><%= sr.exercise&.name %>：<%= sr.weight %>kg × <%= sr.reps %>回 × <%= sr.sets %>セット (<%= sr.calories.to_f.round(1) %> kcal)</li>
+        <% end %>
+      </ul>
+      <p style="font-weight: bold; color: #5bc0de;">筋トレ合計: <%= strength_total.round(1) %> kcal</p>
+    </div>
+  <% end %>
+
+  <!-- 有酸素 -->
+  <% if @workout.cardio_records.any? %>
+    <div style="margin-bottom: 10px;">
+      <h4 style="margin-bottom: 5px; color: #f0ad4e;">🏃 有酸素</h4>
+      <ul style="padding-left: 15px;">
+        <% @workout.cardio_records.each do |cr| %>
+          <li><%= cr.exercise&.name %>：<%= cr.distance %>km / <%= cr.duration %>分 (<%= cr.calories.to_f.round(1) %> kcal)</li>
+        <% end %>
+      </ul>
+      <p style="font-weight: bold; color: #f0ad4e;">有酸素合計: <%= cardio_total.round(1) %> kcal</p>
+    </div>
+  <% end %>
+
+  <!-- 編集・削除 -->
+  <div style="margin-top: 10px;">
+    <%= link_to "編集", edit_workout_path(@workout), class: "btn btn-sm btn-secondary" %>
+    <%= link_to "削除", workout_path(@workout), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-danger" %>
+    <%= link_to "一覧に戻る", workouts_path, class: "btn btn-sm btn-primary" %>
+  </div>
+</div>

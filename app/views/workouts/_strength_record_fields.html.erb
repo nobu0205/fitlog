@@ -1,0 +1,25 @@
+<div class="strength-record-fields border p-2 mb-2 relative">
+  <button type="button" data-action="click->strength-form#remove" class="absolute right-0 top-0 px-2 py-1 bg-red-500 text-white rounded">×</button>
+
+  <%= f.hidden_field :_destroy %>
+
+  <div>
+    <%= f.label :exercise_id, "種目" %>
+    <%= f.collection_select :exercise_id, exercises, :id, :name, prompt: "選択してください" %>
+  </div>
+
+  <div>
+    <%= f.label :weight, "重量(kg)" %>
+    <%= f.number_field :weight, step: 0.1 %>
+  </div>
+
+  <div>
+    <%= f.label :reps, "回数" %>
+    <%= f.number_field :reps %>
+  </div>
+
+  <div>
+    <%= f.label :sets, "セット数" %>
+    <%= f.number_field :sets %>
+  </div>
+</div>

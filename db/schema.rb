@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_03_24_071712) do
+ActiveRecord::Schema[7.1].define(version: 2026_03_25_095739) do
   create_table "cardio_records", force: :cascade do |t|
     t.integer "workout_id", null: false
     t.integer "exercise_id", null: false
@@ -30,9 +30,10 @@ ActiveRecord::Schema[7.1].define(version: 2026_03_24_071712) do
     t.integer "exercise_type"
     t.float "mets"
     t.boolean "is_custom"
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "muscle_group"
     t.index ["user_id"], name: "index_exercises_on_user_id"
   end
 

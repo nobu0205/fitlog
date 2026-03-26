@@ -3,4 +3,7 @@ class Exercise < ApplicationRecord
 
   has_many :strength_records
   has_many :cardio_records
+  enum exercise_type: { strength: 0, cardio: 1 }
+
+  validates :muscle_group, presence: true
 end
