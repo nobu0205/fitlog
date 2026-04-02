@@ -1,0 +1,50 @@
+<div class="mypage-hero" style="background-image: url('<%= asset_path('mypage.jpg') %>'); background-size: cover; background-position: center; min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; position: relative; padding-top: 64px;">
+  <div class="overlay" style="background-color: rgba(0,0,0,0.5); padding: 40px; border-radius: 12px; width: 100%; max-width: 800px; color: white; text-align: center; margin-bottom: 40px;">
+    <h1>マイページ</h1>
+    <div class="mypage-content" style="display: flex; gap: 30px; width: 100%; max-width: 1000px; margin: 0 auto;">
+      
+      <!-- 左側：ユーザー情報とワークアウト履歴 -->
+      <div class="left" style="flex: 1;">
+        <p>ユーザー名: <%= @user.nickname.presence || @user.email %></p>
+        <p>体重: <%= @user.weight || "未設定" %> kg</p>
+
+        <h2>ワークアウト履歴</h2>
+
+        <% if @workouts.any? %>
+          <% @workouts.each do |workout| %>
+            <div class="workout-card" style="margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 8px; background-color: rgba(255, 255, 255, 0.1);">
+              <p><strong><%= workout.date.strftime("%Y/%m/%d") %></strong></p>
+              <p><%= workout.memo %></p>
+
+              <% strength_total = workout.strength_records.sum { |sr| sr.calories.to_f } %>
+              <% cardio_total = workout.cardio_records.sum { |cr| cr.calories.to_f } %>
+              <% total = strength_total + cardio_total %>
+
+              <p><strong>合計カロリー:</strong> <%= total.round(1) %> kcal</p>
+
+              <%= link_to "詳細を見る", workout_path(workout), class: "btn btn-sm btn-primary" %>
+            </div>
+          <% end %>
+        <% else %>
+          <p>まだワークアウトがありません</p>
+        <% end %>
+      </div>
+
+      <!-- 右側：ランキング -->
+      <div class="right" style="width: 250px;">
+        <h3>🏆 日別カロリーランキング TOP5</h3>
+        <% @daily_ranking.each_with_index do |data, i| %>
+          <div style="border-bottom: 1px solid #ddd; padding: 8px 0;">
+            <strong>
+              <% if i == 0 %>🥇<% elsif i == 1 %>🥈<% elsif i == 2 %>🥉<% else %><%= i+1 %>位<% end %>
+            </strong>
+            <p><%= data[:user].nickname.presence || data[:user].email %></p>
+            <p><%= data[:date].strftime("%Y/%m/%d") %></p>
+            <p><%= data[:calories].round(1) %> kcal</p>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

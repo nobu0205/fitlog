@@ -11,6 +11,48 @@
   </head>
 
   <body>
+
+    <% if flash[:notice] %>
+  <div class="flash flash-notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<% if flash[:alert] %>
+  <div class="flash flash-alert">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+
+    <!-- ナビバー -->
+    <nav class="navbar">
+      <div class="nav-container">
+
+        <div class="logo">
+          <%= link_to "Fitlog", root_path %>
+        </div>
+
+        <div class="nav-links">
+          <% if user_signed_in? %>
+            <%= link_to "マイページ", mypage_path %>
+            <%= link_to "一覧", workouts_path %>
+            <%= link_to "新規作成", new_workout_path %>
+
+            <%= button_to "ログアウト",
+                  destroy_user_session_path,
+                  method: :delete,
+                  class: "logout-btn" %>
+          <% else %>
+            <%= link_to "ログイン", new_user_session_path %>
+            <%= link_to "新規登録", new_user_registration_path %>
+          <% end %>
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- ページ本体 -->
     <%= yield %>
+
   </body>
 </html>

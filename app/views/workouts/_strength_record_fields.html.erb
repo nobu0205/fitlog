@@ -1,25 +1,29 @@
-<div class="strength-record-fields border p-2 mb-2 relative">
-  <button type="button" data-action="click->strength-form#remove" class="absolute right-0 top-0 px-2 py-1 bg-red-500 text-white rounded">×</button>
+<div class="strength-record-fields workout-card relative">
+  <!-- 削除ボタン -->
+  <button type="button" data-action="click->strength-form#remove" 
+          class="absolute right-2 top-2 px-2 py-1 bg-red-500 text-white rounded">×</button>
 
   <%= f.hidden_field :_destroy %>
 
-  <div>
-    <%= f.label :exercise_id, "種目" %>
-    <%= f.collection_select :exercise_id, exercises, :id, :name, prompt: "選択してください" %>
+  <div class="mb-2">
+    <%= f.label :exercise_id, "種目", class: "block mb-1" %>
+    <%= f.collection_select :exercise_id, exercises, :id, :name, 
+          { prompt: "選択してください" }, 
+          class: "w-full p-2 rounded bg-white/20 text-white border-none" %>
   </div>
 
-  <div>
-    <%= f.label :weight, "重量(kg)" %>
-    <%= f.number_field :weight, step: 0.1 %>
+  <div class="mb-2">
+    <%= f.label :weight, "重量(kg)", class: "block mb-1" %>
+    <%= f.number_field :weight, step: 2.5, class: "w-full p-2 rounded bg-white/20 text-white border-none" %>
   </div>
 
-  <div>
-    <%= f.label :reps, "回数" %>
-    <%= f.number_field :reps %>
+  <div class="mb-2">
+    <%= f.label :reps, "回数", class: "block mb-1" %>
+    <%= f.number_field :reps, class: "w-full p-2 rounded bg-white/20 text-white border-none" %>
   </div>
 
-  <div>
-    <%= f.label :sets, "セット数" %>
-    <%= f.number_field :sets %>
+  <div class="mb-2">
+    <%= f.label :sets, "セット数", class: "block mb-1" %>
+    <%= f.number_field :sets, class: "w-full p-2 rounded bg-white/20 text-white border-none" %>
   </div>
 </div>

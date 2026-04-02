@@ -1,0 +1,406 @@
+.navbar {
+  background-color: #1f2937;
+  padding: 12px 20px;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo a {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: #d1d5db;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+}
+
+.logout-btn {
+  background: none;
+  border: 1px solid #ef4444;
+  color: #ef4444;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #ef4444;
+  color: white;
+}
+
+.hero {
+  background-image: url("<%= asset_path 'fitness.avif' %>");
+  background-size: cover;
+  background-position: center;
+  height: calc(100vh - 64px); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.hero .overlay {
+  background-color: rgba(0, 0, 0, 0.4); /* 文字を見やすくする半透明オーバーレイ */
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  color: white;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 24px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+  transition: 0.2s;
+}
+
+.btn-primary { background-color: #3b82f6; }
+.btn-primary:hover { background-color: #2563eb; }
+
+.btn-success { background-color: #10b981; }
+.btn-success:hover { background-color: #059669; }
+
+.btn-warning { background-color: #f59e0b; }
+.btn-warning:hover { background-color: #b45309; }
+
+.btn-danger { background-color: #ef4444; }
+.btn-danger:hover { background-color: #b91c1c; }
+
+.register-hero {
+  background-image: url("<%= asset_path('shinki.jpg') %>");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.register-hero .overlay {
+  background-color: rgba(0,0,0,0.5); 
+  padding: 40px;
+  border-radius: 12px;
+  color: white;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-hero {
+  background-image: url("<%= asset_path('login_bg.jpg') %>");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.login-hero .overlay {
+  background-color: rgba(0,0,0,0.5); 
+  padding: 40px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;   /* 新規登録と同じ幅 */
+  text-align: center;
+  color: white;
+}
+
+/* マイページ全体用ヒーロー */
+.mypage-hero {
+  background-image: url("<%= asset_path('mypage.avif') %>"); 
+  background-size: cover;          /* 画面全体にフィット */
+  background-position: center;
+  min-height: 100vh;               /* コンテンツが少なくても画面全体 */
+  display: flex;
+  flex-direction: column;           /* 上下に整列 */
+  justify-content: flex-start;      /* 上からコンテンツ開始 */
+  align-items: center;              /* 横は中央揃え */
+  position: relative;
+  padding-top: 64px;                /* ナビバー分の余白 */
+  box-sizing: border-box;
+}
+
+/* 半透明オーバーレイで文字を見やすく */
+.mypage-hero .overlay {
+  background-color: rgba(0, 0, 0, 0.5); 
+  padding: 40px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 800px;                /* 幅制限 */
+  color: white;
+  text-align: center;
+  margin-bottom: 40px;             /* 下に少し余白 */
+}
+
+/* コンテンツを包む内部ブロック */
+.mypage-content {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.mypage-content .left {
+  flex: 1;
+}
+
+.mypage-content .right {
+  width: 250px;
+}
+
+/* ワークアウト履歴カード */
+.workout-card {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ボタン */
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+.register-hero {
+  background-image: url("<%= asset_path('my_new_bg.jpg') %>");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;   /* 画面全体にフィット */
+  height: auto;        /* コンテンツに応じて伸縮 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.register-hero .overlay {
+  background-color: rgba(0,0,0,0.5); 
+  padding: 40px;
+  border-radius: 12px;
+  color: white;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* strength / cardio 行カード */
+.workout-card {
+  margin-bottom: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.15); /* 半透明オーバーレイ */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+/* カード内フォーム要素 */
+.workout-card input,
+.workout-card select,
+.workout-card textarea {
+  width: 100%;
+  padding: 6px 8px;
+  margin-top: 4px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+/* ボタン */
+.btn {
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  color: white;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+/* strength / cardio 行追加ボタン */
+.btn-add-row {
+  width: 100%;
+  margin-top: 8px;
+}
+
+/* レスポンシブ調整 */
+@media (max-width: 480px) {
+  .register-hero .overlay {
+    padding: 20px;
+    max-width: 95%;
+  }
+
+  .workout-card input,
+  .workout-card select,
+  .workout-card textarea {
+    font-size: 14px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+}
+
+.workouts-hero {
+  background-image: url("<%= asset_path('my_new_bg.jpg') %>");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 60px; /* navbar分 */
+  position: relative;
+}
+
+.workouts-hero .overlay {
+  background-color: rgba(0,0,0,0.5);
+  padding: 40px;
+  border-radius: 12px;
+  color: white;
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+}
+
+.workouts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.workout-card {
+  background-color: rgba(255,255,255,0.1);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  text-align: left;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.memo {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.exercise-section h4 {
+  margin-bottom: 5px;
+}
+
+.exercise-section.strength h4 {
+  color: #5bc0de;
+}
+
+.exercise-section.cardio h4 {
+  color: #f0ad4e;
+}
+
+.section-total {
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.card-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+.form-container {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 400px;       /* フォーム幅の制限 */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================= */
+/* ワークアウト詳細ページのボタン文字サイズ統一 */
+.workouts-hero .card-actions .btn {
+  font-size: 14px; /* 文字サイズを統一 */
+  padding: 10px 16px; /* paddingも統一 */
+}
+
+.flash {
+  position: fixed;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  color: white;
+  z-index: 9999;
+  animation: fadeOut 3s forwards;
+}
+
+.flash-notice {
+  background-color: #10b981; /* 緑 */
+}
+
+.flash-alert {
+  background-color: #ef4444; /* 赤 */
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}

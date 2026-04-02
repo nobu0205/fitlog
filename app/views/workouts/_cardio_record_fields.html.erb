@@ -1,4 +1,4 @@
-<div class="cardio-record-fields border p-2 mb-2 relative">
+<div class="workout-card cardio-record-fields">
   <button type="button" data-action="click->cardio-form#remove" class="absolute right-0 top-0 px-2 py-1 bg-red-500 text-white rounded">×</button>
 
   <%= f.hidden_field :_destroy %>
@@ -20,6 +20,6 @@
 
   <div>
     <%= f.label :distance, "距離(km)" %>
-    <%= f.number_field :distance, step: 0.01 %>
+    <%= f.number_field :distance, step: 0.1 %>
   </div>
 </div>

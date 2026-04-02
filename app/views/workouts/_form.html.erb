@@ -1,44 +1,58 @@
-<%= form_with model: @workout, local: true do |f| %>
+<div class="register-hero">
+  <div class="overlay">
+    <h1>新規ワークアウト作成</h1>
 
-  <div>
-    <%= f.label :date, "日付" %>
-    <%= f.date_field :date %>
-  </div>
+    <%= form_with model: @workout, local: true do |f| %>
+      
+      <!-- 日付 -->
+      <div class="mb-3">
+        <%= f.label :date, "日付" %>
+        <%= f.date_field :date, class: "w-full p-2 rounded" %>
+      </div>
 
-  <div>
-    <%= f.label :memo, "メモ" %>
-    <%= f.text_area :memo %>
-  </div>
+      <!-- メモ -->
+      <div class="mb-3">
+        <%= f.label :memo, "メモ" %>
+        <%= f.text_area :memo, class: "w-full p-2 rounded" %>
+      </div>
 
-  <h3>💪 筋トレ</h3>
-  <div data-controller="strength-form" data-strength-form-target="container">
-    <%= f.fields_for :strength_records do |sr| %>
-      <%= render partial: "strength_record_fields", locals: { f: sr, exercises: @strength_exercises } %>
+      <!-- 筋トレ -->
+      <h3>💪 筋トレ</h3>
+      <div data-controller="strength-form">
+        <div data-strength-form-target="container">
+          <%= f.fields_for :strength_records do |sr| %>
+            <%= render partial: "strength_record_fields", locals: { f: sr, exercises: @strength_exercises } %>
+          <% end %>
+        </div>
+        <button type="button" data-action="click->strength-form#add" class="btn btn-primary mt-2 w-full">行追加</button>
+      </div>
+
+      <!-- 非表示テンプレート -->
+      <div id="strength-template" style="display:none;">
+        <%= f.fields_for "workout[strength_records_attributes][]", Workout.new.strength_records.build do |sr| %>
+          <%= render partial: "strength_record_fields", locals: { f: sr, exercises: @strength_exercises } %>
+        <% end %>
+      </div>
+
+      <!-- 有酸素 -->
+      <h3>🏃 有酸素</h3>
+      <div data-controller="cardio-form">
+        <div data-cardio-form-target="container">
+          <%= f.fields_for :cardio_records do |cr| %>
+            <%= render partial: "cardio_record_fields", locals: { f: cr, exercises: @cardio_exercises } %>
+          <% end %>
+        </div>
+        <button type="button" data-action="click->cardio-form#add" class="btn btn-primary mt-2 w-full">行追加</button>
+      </div>
+
+      <!-- 非表示テンプレート -->
+      <div id="cardio-template" style="display:none;">
+        <%= f.fields_for "workout[cardio_records_attributes][]", Workout.new.cardio_records.build do |cr| %>
+          <%= render partial: "cardio_record_fields", locals: { f: cr, exercises: @cardio_exercises } %>
+        <% end %>
+      </div>
+
+      <%= f.submit "作成", class: "btn btn-success mt-4 w-full" %>
     <% end %>
   </div>
-  <button type="button" data-action="click->strength-form#add">行追加</button>
-
-  <!-- 非表示テンプレート -->
-  <div id="strength-template" style="display:none;">
-    <%= f.fields_for "workout[strength_records_attributes][]", Workout.new.strength_records.build do |sr| %>
-      <%= render partial: "strength_record_fields", locals: { f: sr, exercises: @strength_exercises } %>
-    <% end %>
-  </div>
-
-  <h3>🏃 有酸素</h3>
-  <div data-controller="cardio-form" data-cardio-form-target="container">
-    <%= f.fields_for :cardio_records do |cr| %>
-      <%= render partial: "cardio_record_fields", locals: { f: cr, exercises: @cardio_exercises } %>
-    <% end %>
-  </div>
-  <button type="button" data-action="click->cardio-form#add">行追加</button>
-
-  <!-- 非表示テンプレート -->
-  <div id="cardio-template" style="display:none;">
-    <%= f.fields_for "workout[cardio_records_attributes][]", Workout.new.cardio_records.build do |cr| %>
-      <%= render partial: "cardio_record_fields", locals: { f: cr, exercises: @cardio_exercises } %>
-    <% end %>
-  </div>
-
-  <%= f.submit %>
-<% end %>
+</div>

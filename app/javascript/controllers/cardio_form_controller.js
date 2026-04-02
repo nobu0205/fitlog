@@ -5,12 +5,8 @@ export default class extends Controller {
 
   add() {
     const template = document.querySelector("#cardio-template")
-    const newRow = template.cloneNode(true)
-    newRow.querySelectorAll("input, select").forEach(el => {
-      if (el.type !== "hidden") el.value = ""
-      if (el.name.includes("_destroy")) el.value = "0"
-    })
-    this.containerTarget.appendChild(newRow)
+    const newRow = template.innerHTML
+    this.containerTarget.insertAdjacentHTML("beforeend", newRow)
   }
 
   remove(event) {
