@@ -79,12 +79,12 @@ https://gyazo.com/91a4176a2b95b4d7e01ce3d239d8f5a2
 ---
 
 ## データベース設計
-https://gyazo.com/8de413134596e69320302e59fa91b2b5
+https://gyazo.com/1d4e3758750bb6c5ac8e60cfe8a60b55
 
 ---
 
 ## 画面遷移図
-https://gyazo.com/8fa50d6e861e7b301102f2dd487d44f3
+https://gyazo.com/53f489aaf4b70c17a43c8412894632b5
 
 ※ログイン機能必須
 ※自分のワークアウトのみ表示
