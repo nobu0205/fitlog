@@ -2,7 +2,7 @@
   <div class="overlay">
     <h1>新規ワークアウト作成</h1>
 
-    <%= form_with model: @workout, local: true do |f| %>
+    <%= form_with model: @workout, local: true, data: { turbo: false } do |f| %>
       
       <!-- 日付 -->
       <div class="mb-3">
